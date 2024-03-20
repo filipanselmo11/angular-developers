@@ -17,7 +17,7 @@ export class FormComponent {
   id: number = Math.floor(Math.random() * 1000) + 1;
   name: string =   '';
   email: string = '';
-  technologies: string = ';'
+  technologies: string = '';
 
   constructor(private devService: DevService, private router: Router){}
 
