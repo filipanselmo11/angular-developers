@@ -4,3 +4,7 @@ export interface DevInterface {
   email: string;
   technologies: string;
 }
+
+export interface DevelopersInterface {
+  developers: DevInterface[]
+}

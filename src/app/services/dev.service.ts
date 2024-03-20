@@ -8,11 +8,11 @@ import { DevInterface } from '../types/dev';
 })
 export class DevService {
 
-  // baseURL = 'http://localhost:3333';
+  baseURL = 'http://localhost:3333/developers';
 
   constructor(private httpClient: HttpClient) { }
 
-  getDevs():Observable<DevInterface[]> {
-    return this.httpClient.get<DevInterface[]>('http://localhost:3333/developers');
+  getDevs(): Observable<DevInterface[]> {
+    return this.httpClient.get<DevInterface[]>(this.baseURL);
   }
 }

@@ -1,1 +1,12 @@
-<p>home works!</p>
+<app-button></app-button>
+<div *ngIf="loading">
+  <app-progress></app-progress>
+</div>
+<br>
+<div #elseblock>
+  <mat-grid-list cols="3" rowHeight="199px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let item of listDevs">
+      <app-card name="item.name" email="item.email" technologies="item.technologies"></app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
