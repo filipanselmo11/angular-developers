@@ -6,6 +6,7 @@ import { ProgressComponent } from '../../components/progress/progress.component'
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CardComponent } from '../../components/card/card.component';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -16,16 +17,16 @@ import { CardComponent } from '../../components/card/card.component';
 export class HomeComponent implements OnInit {
 
   loading: boolean = true;
-  listDevs: DevInterface[] = [];
+  listDevs!: DevInterface[];
 
   constructor(private devService: DevService) {}
 
   ngOnInit(): void {
-    this.devService.getDevs().subscribe((res) => {
+    this.devService.getDevs().subscribe((res: DevInterface[]) => {
       this.loading = true;
       this.listDevs = res;
-      console.log('DEVS ', this.listDevs);
+      console.log('LIST DEVS ', this.listDevs);
       this.loading = false;
-    })
+    });
   }
 }

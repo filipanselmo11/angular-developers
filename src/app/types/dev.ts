@@ -5,6 +5,3 @@ export interface DevInterface {
   technologies: string;
 }
 
-export interface DevelopersInterface {
-  developers: DevInterface[]
-}

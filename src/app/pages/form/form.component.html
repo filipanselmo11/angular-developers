@@ -1,0 +1,17 @@
+<form class="example-form" (ngSubmit)="submitForm()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input ngModel="name" matInput placeholder="Developer Name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label ngModel="email">E-mail</mat-label>
+    <input matInput placeholder="Developer Email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Technologies</mat-label>
+    <input ngModel="technologies" matInput placeholder="Developer Technologies">
+  </mat-form-field>
+  <button mat-flat-button color="primary">
+    Criar Dev
+  </button>
+</form>

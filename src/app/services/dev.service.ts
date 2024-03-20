@@ -8,11 +8,15 @@ import { DevInterface } from '../types/dev';
 })
 export class DevService {
 
-  baseURL = 'http://localhost:3333/developers';
+  baseURL = 'http://localhost:3333';
 
   constructor(private httpClient: HttpClient) { }
 
   getDevs(): Observable<DevInterface[]> {
-    return this.httpClient.get<DevInterface[]>(this.baseURL);
+    return this.httpClient.get<DevInterface[]>(`${this.baseURL}/developers`);
+  }
+
+  createDev(dados: DevInterface): Observable<DevInterface> {
+    return this.httpClient.post<DevInterface>(`${this.baseURL}/developers`, dados);
   }
 }
