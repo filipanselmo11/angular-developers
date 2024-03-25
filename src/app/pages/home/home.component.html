@@ -5,9 +5,12 @@
 <br>
 <div #elseblock>
   <mat-grid-list cols="3" rowHeight="199px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let item of listDevs | keyvalue">
-      KEY:{{ item.key }} - VALUE:{{ item.value }}
-      <app-card name="item.name" email="item.email" technologies="item.technologies"></app-card>
+    <mat-grid-tile *ngFor="let item of listDevs">
+      <app-card
+        name="{{ item.name }}"
+        email="{{ item.email }}"
+        technologies="{{ item.technologies }}"
+        ></app-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -17,16 +17,17 @@ import { CardComponent } from '../../components/card/card.component';
 export class HomeComponent implements OnInit {
 
   loading: boolean = true;
-  listDevs!: DevInterface[];
+  listDevs: DevInterface[] = [];
 
   constructor(private devService: DevService) {}
 
   ngOnInit(): void {
-    this.devService.getDevs().subscribe((res: DevInterface[]) => {
-      this.loading = true;
+    this.loading = true;
+    this.devService.getDevs().subscribe((res) => {
       this.listDevs = res;
-      console.log('LIST DEVS ', this.listDevs);
-      this.loading = false;
+    }, (error) => {
+      console.error('ERROR ', error);
     });
+    this.loading = false;
   }
 }

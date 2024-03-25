@@ -1,24 +1,31 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { DevService } from '../../services/dev.service';
 import { Router } from '@angular/router';
 import { DevInterface } from '../../types/dev';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  providers: [ DevService ],
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, ReactiveFormsModule],
+  providers: [DevService],
+  imports: [
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
   devForm!: FormGroup;
 
-  constructor(private devService: DevService, private router: Router){
+  constructor(private devService: DevService, private router: Router, private toastr: ToastrService) {
     // Método 1
     // private fb: FormBuilder
     // this.devForm = this.fb.group({
@@ -49,11 +56,11 @@ export class FormComponent {
       email: this.devForm.value.email,
       technologies: this.devForm.value.technologies
     }
-    this.devService.createDev(data).subscribe((res)=> {
-      console.log('RES ', res);
+    this.devService.createDev(data).subscribe((res) => {
+      this.toastr.success('Dev Criado com sucesso');
       this.router.navigate(['']);
     }, (error) => {
-      console.error('ERROR ', error);
+      this.toastr.error(error);
     });
   }
 }
